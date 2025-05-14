@@ -1,0 +1,54 @@
+.wallet-app {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #666;
+    }
+  }
+
+  .wallet-section {
+    margin-bottom: 2rem;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+    color: #777;
+    font-size: 0.9rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .wallet-app {
+    header {
+      h1 {
+        color: #f1f1f1;
+      }
+
+      p {
+        color: #aaa;
+      }
+    }
+
+    footer {
+      border-top-color: #333;
+      color: #888;
+    }
+  }
+}
