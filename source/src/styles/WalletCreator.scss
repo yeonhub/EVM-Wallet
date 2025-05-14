@@ -58,6 +58,11 @@
       box-sizing: border-box;
     }
 
+    textarea.masked-text {
+      font-family: "password";
+      letter-spacing: 0.2em;
+    }
+
     .hint {
       font-size: 0.9rem;
       color: #666;
@@ -280,4 +285,14 @@
       }
     }
   }
+}
+
+// 비밀번호 마스킹용 글꼴 정의
+@font-face {
+  font-family: "password";
+  font-style: normal;
+  font-weight: 400;
+  src: url(data:font/woff;base64,d09GRgABAAAAAAYMAAsAAAAABtwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABJRU5ErkJggg==)
+    format("woff");
+  unicode-range: U+0000-FFFF;
 }

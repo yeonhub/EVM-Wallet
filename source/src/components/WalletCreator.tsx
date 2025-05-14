@@ -92,9 +92,7 @@ const WalletCreator: React.FC<WalletCreatorProps> = ({
     if (
       selectedMethod === "mnemonic" &&
       !mnemonic.trim() &&
-      !confirm(
-        "니모닉이 입력되지 않았습니다. 랜덤 니모닉을 생성하시겠습니까?"
-      )
+      !confirm("니모닉이 입력되지 않았습니다. 랜덤 니모닉을 생성하시겠습니까?")
     ) {
       return;
     }
@@ -102,11 +100,12 @@ const WalletCreator: React.FC<WalletCreatorProps> = ({
     onCreateWallet(selectedMethod, mnemonic.trim() || undefined);
   };
 
-  const isCreateButtonDisabled =
+  // 지갑 생성 버튼 활성화 여부
+  const isCreateButtonDisabled: boolean =
     isLoading ||
     (selectedMethod === "mnemonic" &&
       touched &&
-      mnemonic.trim() &&
+      mnemonic.trim() !== "" &&
       !validation?.isValid);
 
   return (
@@ -148,12 +147,9 @@ const WalletCreator: React.FC<WalletCreatorProps> = ({
               onChange={handleMnemonicChange}
               onBlur={handleMnemonicBlur}
               rows={3}
-              style={{
-                WebkitTextSecurity: showMnemonic ? "none" : "disc",
-              }}
-              className={
+              className={`${
                 validation && !validation.isValid && touched ? "error" : ""
-              }
+              } ${!showMnemonic ? "masked-text" : ""}`}
             />
             <button
               type="button"

@@ -71,14 +71,18 @@ export const createWalletFromMnemonic = async (
     let mnemonicPhrase: string;
 
     if (mnemonic) {
-      wallet = ethers.Wallet.fromPhrase(mnemonic.trim());
+      // 타입 단언 사용
+      wallet = ethers.Wallet.fromPhrase(
+        mnemonic.trim()
+      ) as unknown as ethers.Wallet;
       mnemonicPhrase = mnemonic.trim();
     } else {
       const randomWallet = ethers.Wallet.createRandom();
       if (!randomWallet.mnemonic?.phrase) {
         throw new Error("니모닉 생성에 실패했습니다.");
       }
-      wallet = randomWallet;
+      // 타입 단언 사용
+      wallet = randomWallet as unknown as ethers.Wallet;
       mnemonicPhrase = randomWallet.mnemonic.phrase;
     }
 
@@ -98,7 +102,7 @@ export const createWalletFromMnemonic = async (
 
 export const createWalletFromRandomSeed = (): WalletInfo => {
   try {
- const privateKeyBytes = ethers.randomBytes(32);
+    const privateKeyBytes = ethers.randomBytes(32);
     const privateKey = ethers.hexlify(privateKeyBytes);
 
     const wallet = new ethers.Wallet(privateKey);
